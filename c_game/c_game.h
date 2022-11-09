@@ -34,5 +34,7 @@ typedef unsigned long       uint64;
 void
 simple_boll();
 
+void
+simple_plane();
 
 #endif

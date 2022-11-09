@@ -39,8 +39,8 @@ print_border(uint16 length, uint16 width, uint16 boll_x, uint16 boll_y, char bor
     }
 }
 
-int
-main()
+void
+simple_boll()
 {
     //sint16 i, j;
     sint16 x = 5;
