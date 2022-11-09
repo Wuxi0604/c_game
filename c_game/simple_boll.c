@@ -4,29 +4,27 @@
 #include <windows.h>
 #include <assert.h>
 
-
-
 void
 print_border(uint16 length, uint16 width, uint16 boll_x, uint16 boll_y, char border_type)
 {
-    assert(length <= 60);
-    assert(width <= 20);
+    GAME_ASSERT(length <= 60);
+    GAME_ASSERT(width <= 20);
     uint16 x;
     uint16 y;
 
-    for(x = 0; x < width; x++)
+    for(y = 0; y < width; y++)
     {
         //边界上不能有球
-        if(x == 0 || x == width - 1)
+        if(y == 0 || y == width - 1)
         {
-            for(y = 0; y < length; y++)
+            for(x = 0; x < length; x++)
                 printf("%c", border_type);
             printf("\n");
             continue;
         }
-        for(y = 0; y < length; y++)
+        for(x = 0; x < length; x++)
         {
-            if( y == 0 || y == length-1)
+            if( x == 0 || x == length-1)
                 printf("%c", border_type);
             else if(boll_x == x && boll_y == y)
             {
@@ -60,9 +58,6 @@ main()
     //每一次循环的时候都需要重新绘制边框
     while(1 == 1)
     {
-        x = x + velocity_x;
-        y = y + velocity_y;
-        system("cls");
         print_border(right - left, bottom - top, x, y, '-');
         //for(i = 0; i < y; i++)
         //    printf("\n");
@@ -74,10 +69,14 @@ main()
         //printf("\n");
         //Sleep(50);
 
-        if((y == top) || (y == bottom))
+        if((y == top + 1) || (y == bottom - 1))
             velocity_y = - velocity_y;
 
-        if((x == left) || (x == right))
+        if((x == left + 1) || (x == right - 1))
             velocity_x = - velocity_x;
+
+        x = x + velocity_x;
+        y = y + velocity_y;
+        system("cls");
     }
 }
