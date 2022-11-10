@@ -37,4 +37,7 @@ simple_boll();
 void
 simple_plane();
 
+void
+simple_plane_ex();
+
 #endif
